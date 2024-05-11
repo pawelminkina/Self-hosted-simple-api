@@ -18,11 +18,11 @@ elif [ $LOCAL = $BASE ]; then
     BUILD_VERSION=$(git rev-parse HEAD)
     echo "$(date --utc +%FT%TZ): Changes detected, deploying new version: $BUILD_VERSION"
     pwd
-    ./scripts/bash/deploy.sh
+    ./deploy.sh
 elif [ $REMOTE = $BASE ]; then 
     echo "$(date --utc +% FT%TZ): Local changes detected, stashing" 
     git stash
-    ./scripts/bash/deploy.sh
+    ./deploy.sh
 else
     echo "$(date --utc +%FT%TZ): Git is diverged, this is unexpected."
 fi
