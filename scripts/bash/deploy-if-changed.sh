@@ -8,21 +8,17 @@ LOCAL=$(git rev-parse @)
 REMOTE=$(git rev-parse "$UPSTREAM")
 BASE=$(git merge-base @ "$UPSTREAM")
 
-echo "upstream: $UPSTREAM"
-echo "local: $LOCAL"
-echo "remote: $REMOTE"
-
 if [ $LOCAL= $REMOTE ]; then
     echo "$(date --utc +%FT%TZ): No changes detected in git" 
 elif [ $LOCAL = $BASE ]; then
     BUILD_VERSION=$(git rev-parse HEAD)
     echo "$(date --utc +%FT%TZ): Changes detected, deploying new version: $BUILD_VERSION"
     pwd
-    ./deploy.sh
+    ./scripts/bash/deploy.sh
 elif [ $REMOTE = $BASE ]; then 
     echo "$(date --utc +% FT%TZ): Local changes detected, stashing" 
     git stash
-    ./deploy.sh
+    ./scripts/bash/deploy.sh
 else
     echo "$(date --utc +%FT%TZ): Git is diverged, this is unexpected."
 fi
