@@ -8,7 +8,11 @@ LOCAL=$(git rev-parse @)
 REMOTE=$(git rev-parse "$UPSTREAM")
 BASE=$(git merge-base @ "$UPSTREAM")
 
-if [ $LOCAL=$REMOTE ]; then
+echo "upstream: $UPSTREAM"
+echo "local: $LOCAL"
+echo "remote: $REMOTE"
+
+if [ $LOCAL= $REMOTE ]; then
     echo "$(date --utc +%FT%TZ): No changes detected in git" 
 elif [ $LOCAL = $BASE ]; then
     BUILD_VERSION=$(git rev-parse HEAD)
