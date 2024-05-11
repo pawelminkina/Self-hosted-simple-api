@@ -1,4 +1,4 @@
-#!usr/bin/env
+#!usr/bin/env bash
 #has to be added in directory /home/pavixon/automation with chmod +x
 #crontab -u pavixon -e
 #* * * * * /home/pavixon/automation/deploy-simpleapi.sh
