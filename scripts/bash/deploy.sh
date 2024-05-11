@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #fa
 git pull
+cd /src
 
 BUILD_VERSION=$(git rev-parse HEAD)
 

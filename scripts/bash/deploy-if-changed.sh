@@ -13,7 +13,6 @@ if [ $LOCAL = $REMOTE ]; then
 elif [ $LOCAL = $BASE ]; then
     BUILD_VERSION=$(git rev-parse HEAD)
     echo "$(date --utc +%FT%TZ): Changes detected, deploying new version: $BUILD_VERSION"
-    pwd
     ./scripts/bash/deploy.sh
 elif [ $REMOTE = $BASE ]; then 
     echo "$(date --utc +% FT%TZ): Local changes detected, stashing" 
