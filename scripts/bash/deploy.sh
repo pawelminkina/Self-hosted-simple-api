@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #random change, deploy
 git pull
-cd /src
+cd src
 
 BUILD_VERSION=$(git rev-parse HEAD)
 
