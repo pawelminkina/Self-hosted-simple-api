@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  simpleapi:
+    image: ${DOCKER_REGISTRY-}simpleapi
+    build:
+      context: .
+      dockerfile: SimpleAPI/Dockerfile
+    ports:
+      - "5000:5000"
