@@ -1,5 +1,5 @@
 #!/bin/bash
-#some random change
+#some a
 echo "$(date --utc +%FT%TZ): Fetching remote repository..." 
 git fetch
 
