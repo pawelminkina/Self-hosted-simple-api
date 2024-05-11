@@ -1,5 +1,5 @@
 #!/bin/bash
-#trigger
+#trigge
 echo "$(date --utc +%FT%TZ): Fetching remote repository..." 
 git fetch
 
