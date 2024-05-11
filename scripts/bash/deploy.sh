@@ -13,13 +13,13 @@ docker compose build
 
 OLD_CONTAINER=$(docker ps -aqf "name=simpleapi")
 echo "$(date --utc +%FT%TZ): Scaling server up..."
-BUILD_VERSION=$BUILD_VERSION docker compose up -d --no-deps --scale server=2 --no-recreate simpleapi
+BUILD_VERSION=$BUILD_VERSION docker compose up -d --no-deps --scale simpleapi=2 --no-recreate simpleapi
 
 sleep 30
 
 echo "$(date --utc +%FT%TZ): Scaling old server down..."
 docker container rm -f $OLD_CONTAINER
-docker compose up -d --no-deps --scale server=1 --no-recreate simpleapi
+docker compose up -d --no-deps --scale simpleapi=1 --no-recreate simpleapi
 
 echo "$(date --utc +%FT%TZ): Reloading caddy..."
 CADDY_CONTAINER=$(docker ps -aqf "name=caddy")
