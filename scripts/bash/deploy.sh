@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#random change, deploy
+#random change, deployh
 git pull
 cd src
 
