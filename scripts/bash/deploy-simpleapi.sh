@@ -2,7 +2,7 @@
 #has to be added in directory /home/pavixon/automation with chmod +x
 #crontab -u pavixon -e
 #* * * * * /home/pavixon/automation/deploy-simpleapi.sh
-#sudo nano filename can open text editor
+#sudo nano filename can open text editor. Some change to trigger deployment
 
 export DOCKER_CONTENT=pavixon
 
