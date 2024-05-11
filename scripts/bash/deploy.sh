@@ -1,4 +1,5 @@
 #!/user/bin/env bash
+#f
 git pull
 
 BUILD_VERSION=$(git rev-parse HEAD)
