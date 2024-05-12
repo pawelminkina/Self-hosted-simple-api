@@ -40,7 +40,7 @@ services:
   grafana:
     image: grafana/grafana:7.5.7
     ports:
-      - 3000:3000
+      - 3005:3000
     restart: unless-stopped
     volumes:
       - grafana-data:/var/lib/grafana
