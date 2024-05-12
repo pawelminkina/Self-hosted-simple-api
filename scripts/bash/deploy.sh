@@ -19,7 +19,7 @@ sleep 30
 
 echo "$(date --utc +%FT%TZ): Scaling old server down..."
 docker container rm -f $OLD_CONTAINER
-docker compose up -d --no-deps --scale simpleapi=1 --no-recreate simpleapi
+docker compose up -d --scale simpleapi=1 --no-recreate simpleapi
 
 echo "$(date --utc +%FT%TZ): Reloading caddy..."
 CADDY_CONTAINER=$(docker ps -aqf "name=caddy")
