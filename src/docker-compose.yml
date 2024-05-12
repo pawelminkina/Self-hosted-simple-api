@@ -52,5 +52,5 @@ volumes:
   app-seq:
     external: false
   grafana-data:
-    external: true
+    external: false
 
