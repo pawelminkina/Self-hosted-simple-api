@@ -11,6 +11,10 @@ services:
     depends_on:
       - postgres
       - caddy
+      - seq
+
+  seq:
+    image: datalust/seq:latest
 
   caddy:
     image: caddy:2.7-alpine
@@ -28,13 +32,15 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ~/apps/postgres:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data 
     environment:
-      - POSTGRES_PASSWORD=S3cret
-      - POSTGRES_USER=citizix_user
-      - POSTGRES_DB=citizix_db
-
+      - POSTGRES_PASSWORD=password123 # would be replaced on normal deployment
+      - POSTGRES_USER=sa
 
 volumes:
   caddy_data:
   caddy_config:
+  pgdata:
+  app-seq:
+    external: false
+

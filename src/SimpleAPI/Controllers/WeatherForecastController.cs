@@ -1,4 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using SimpleAPI.Entities;
+using SimpleAPI.Infrastructure;
+using SimpleAPI.Models;
 
 namespace SimpleAPI.Controllers
 {
@@ -12,10 +16,12 @@ namespace SimpleAPI.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ApplicationDbContext _dbContext;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, ApplicationDbContext dbContext)
         {
             _logger = logger;
+            _dbContext = dbContext;
         }
 
         [HttpGet]
@@ -28,6 +34,20 @@ namespace SimpleAPI.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [HttpPost]
+        public async Task AddItem([FromBody] IEnumerable<ItemToAdd> toAdd)
+        {
+            _logger.LogInformation("Adding items");
+            var items = toAdd.Select(a=> new Item
+            {
+                Name = a.Name,
+                NumberValue = a.NumberValue
+            });
+            var aa = _dbContext.Database.GetDbConnection();
+            await _dbContext.Items.AddRangeAsync(items);
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

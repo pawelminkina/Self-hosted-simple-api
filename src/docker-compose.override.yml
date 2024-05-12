@@ -5,5 +5,14 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=5000
+      - DatabaseConnectionString=Server=postgres;Database=simpleapidb;User Id=sa;Password=password123
     ports:
       - "5000:5000"
+
+  seq:
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - "15060:80"
+    volumes:
+      - app-seq:/data
