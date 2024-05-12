@@ -37,10 +37,20 @@ services:
       - POSTGRES_PASSWORD=password123 # would be replaced on normal deployment
       - POSTGRES_USER=sa
 
+  grafana:
+    image: grafana/grafana:7.5.7
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+    volumes:
+      - grafana-data:/var/lib/grafana
+
 volumes:
   caddy_data:
   caddy_config:
   pgdata:
   app-seq:
     external: false
+  grafana-data:
+    external: true
 
