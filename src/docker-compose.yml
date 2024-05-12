@@ -8,6 +8,9 @@ services:
       dockerfile: SimpleAPI/Dockerfile
     ports:
       - "5000:5000"
+    depends_on:
+      - postgres
+      - caddy
 
   caddy:
     image: caddy:2.7-alpine
